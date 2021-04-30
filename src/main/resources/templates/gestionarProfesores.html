@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Información de Profesores</title>
+        <meta charset="UTF-8"/>   
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header-materias"/>
+        <h2>Información de Profesores</h2>
+        <a th:href="@{/}">Regresar</a>
+        <br/>
+        <form th:action="@{/guardarprofesores}" method="post" th:object="${profesores}">
+            <input type="hidden" name="idProfesores" th:field="*{idProfesores}"/>
+            <br/>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}" />
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error del nombre</span>
+            <br/>
+            <label for="horario">Apellido:</label> 
+            <input type="text" name="apellido" th:field="*{apellido}" />
+            <br/>
+            <label for="cupoMaxAlumnos">DNI:</label>
+            <input type="text" name="DNI" th:field="*{DNI}"/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+            
+            <div th:replace="layout/plantilla :: footer"></div>
+            
+    </body>
+</html>
