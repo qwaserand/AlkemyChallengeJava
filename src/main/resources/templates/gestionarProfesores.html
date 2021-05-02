@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
+    <head th:replace="layout/plantilla :: headfront">
         <title>Información de Profesores</title>
         <meta charset="UTF-8"/>   
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header-materias"/>
+        <header th:replace="layout/plantilla :: header"/>
         <h2>Información de Profesores</h2>
         <a th:href="@{/}">Regresar</a>
         <br/>
