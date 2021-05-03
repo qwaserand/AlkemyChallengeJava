@@ -28,7 +28,7 @@
                     <td th:text="${materia.cupoMaxAlumnos}"></td>
                     <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/editar/} + ${materia.idMaterias}" th:text="Editar"></a></td>
                     <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminar(idMaterias=${materia.idMaterias})}" th:text="Eliminar"></a></td>
-                    <td sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/inscripcion/}" th:text="inscribirme"></a></td>
+                    <td sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/inscripcion}" th:text="inscribirme"></a></td>
             </table>
         </div>
         

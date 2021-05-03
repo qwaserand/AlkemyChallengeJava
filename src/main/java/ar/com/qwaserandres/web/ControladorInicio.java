@@ -41,13 +41,16 @@ public class ControladorInicio {
     public String agregar(Materias materia) {
         return "gestionarMaterias";
     }
+    //PROBANDO
+    @GetMapping("/inscripcion")
+    public String inscripcion(Materias materia) {
+        return "inscripcion";
+    }
     
     @GetMapping("/agregarprofesores")
     public String agregar(Profesores profesor) {
         return "gestionarProfesores";
     }
-    
-    
     
     @PostMapping("/guardar")
     public String guardar(@Valid Materias materia, Errors errores) {
