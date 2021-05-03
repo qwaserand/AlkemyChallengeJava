@@ -3,11 +3,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
+    <head th:replace="layout/plantilla :: headfront">
         <title>inscripcion</title>
         <meta charset="UTF-8"/>
     </head>
     <body>
+        <header th:replace="layout/plantilla :: header"></header>
         <a th:href="@{/}">Regresar</a>
         <br/>
         <p>
