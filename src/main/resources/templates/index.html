@@ -53,12 +53,8 @@
                     <td th:text="${profesor.nombre}"></td>
                     <td th:text="${profesor.apellido}"></td>
                     <td th:text="${profesor.DNI}"></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a th:href="@{/editarprofesores/} + ${profesor.idProfesores}" th:text="Editar"></a>
-                    </td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a th:href="@{/eliminarprofesores(idProfesores=${profesor.idProfesores})}" th:text="Eliminar"></a>
-                    </td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/editarprofesores/} + ${profesor.idProfesores}" th:text="Editar"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminarprofesores(idProfesores=${profesor.idProfesores})}" th:text="Eliminar"></a></td>
             </table>
         </div>
         

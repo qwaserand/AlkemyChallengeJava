@@ -1,0 +1,4 @@
+- Para compilar usar jdk11 minimo
+- solo hice dos usuarios:
+  "admin" y "user"
+  los password para ambos son "123"
