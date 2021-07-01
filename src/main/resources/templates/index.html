@@ -26,9 +26,15 @@
                     <td th:text="${materia.nombre}"></td>
                     <td th:text="${materia.horario}"></td>
                     <td th:text="${materia.cupoMaxAlumnos}"></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/editar/} + ${materia.idMaterias}" th:text="Editar"></a></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminar(idMaterias=${materia.idMaterias})}" th:text="Eliminar"></a></td>
-                    <td sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/inscripcion}" th:text="inscribirme"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/editar/} + ${materia.idMaterias}" th:text="Editar"></a>
+                    </td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/eliminar(idMaterias=${materia.idMaterias})}" th:text="Eliminar"></a>
+                    </td>
+                    <td sec:authorize="hasRole('ROLE_USER')">
+                        <a th:href="@{/inscripcion}" th:text="inscribirme"></a>
+                    </td>
             </table>
         </div>
         
@@ -47,8 +53,12 @@
                     <td th:text="${profesor.nombre}"></td>
                     <td th:text="${profesor.apellido}"></td>
                     <td th:text="${profesor.DNI}"></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/editarprofesores/} + ${profesor.idProfesores}" th:text="Editar"></a></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminarprofesores(idProfesores=${profesor.idProfesores})}" th:text="Eliminar"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/editarprofesores/} + ${profesor.idProfesores}" th:text="Editar"></a>
+                    </td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/eliminarprofesores(idProfesores=${profesor.idProfesores})}" th:text="Eliminar"></a>
+                    </td>
             </table>
         </div>
         
