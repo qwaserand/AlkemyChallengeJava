@@ -2,30 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
-        <title>Información de la Materia</title>
-        <meta charset="UTF-8"/>   
+    <head th:replace="layout/plantilla :: head">
+        <title>Datos del Profesor</title>
+        <meta charset="UTF-8">
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header-materias"/>
-        <h2>Información de la Materia</h2>
-        <a th:href="@{/}">Regresar</a>
-        <br/>
-        <form th:action="@{/guardar}" method="post" th:object="${materias}">
-            <input type="hidden" name="idMaterias" th:field="*{idMaterias}"/>
-            <br/>
-            <label for="nombre">Nombre de la Materia:</label>
-            <input type="text" name="nombre" th:field="*{nombre}" />
-            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error del nombre</span>
-            <br/>
-            <label for="horario">Horario de la Materia:</label> 
-            <input type="text" name="horario" th:field="*{horario}" />
-            <br/>
-            <label for="cupoMaxAlumnos">Cupo máximo de Alumnos:</label>
-            <input type="number" name="cupoMaxAlumnos" th:field="*{cupoMaxAlumnos}"/>
-            <br/>
-            <input type="submit" name="guardar" value="Guardar"/>
-            
-            <div th:replace="layout/plantilla :: footer"></div>
+        <header th:replace="layout/plantilla :: header"><header/>
+        <section th:replace="layout/editarMateria :: editarMateria"></section>
+        <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>

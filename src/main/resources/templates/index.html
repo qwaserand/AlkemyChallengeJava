@@ -7,66 +7,26 @@
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
-        <h1 th:replace="layout/plantilla :: h1-materias"/>
+
+        <section sec:authorize="hasRole('ROLE_ADMIN')" 
+            th:replace="layout/botonesAgregar :: botonesAgregar">
+        </section>
         
-        <!--<section th:replace="layout/botonesAgregar :: botonesAgregar"></section>-->
+        <section th:replace="layout/agregarMateria :: agregarMateria"></section>
+
+        <section th:replace="layout/listadoMaterias :: listadoMaterias"></section>
         
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}" >Agregar Materia</a>
-        <div th:if="${materias != null and !materias.empty}">
-            <table border="1">
-                <tr>
-                    <th>Nombre de la Materia</th>
-                    <th>Horario</th>
-                    <th>Cupo Máximo</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
-                    <th sec:authorize="hasRole('ROLE_USER')">Inscribirme</th>
-                </tr>
-                <tr th:each="materia : ${materias}">
-                    <td th:text="${materia.nombre}"></td>
-                    <td th:text="${materia.horario}"></td>
-                    <td th:text="${materia.cupoMaxAlumnos}"></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a th:href="@{/editar/} + ${materia.idMaterias}" th:text="Editar"></a>
-                    </td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a th:href="@{/eliminar(idMaterias=${materia.idMaterias})}" th:text="Eliminar"></a>
-                    </td>
-                    <td sec:authorize="hasRole('ROLE_USER')">
-                        <a th:href="@{/inscripcion}" th:text="inscribirme"></a>
-                    </td>
-            </table>
-        </div>
+        <section sec:authorize="hasRole('ROLE_ADMIN')" 
+            th:replace="layout/botonesAgregar :: botonesAgregar"> 
+        </section>
         
-        <h1 sec:authorize="hasRole('ROLE_ADMIN')" th:replace="layout/plantilla :: h1-profesores"/>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregarprofesores}" >Agregar Profesor</a>
-        <div th:if="${profesores != null and !profesores.empty}">
-            <table sec:authorize="hasRole('ROLE_ADMIN')" border="1">
-                <tr>
-                    <th>Nombre:</th>
-                    <th>Apellido:</th>
-                    <th>DNI</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
-                </tr>
-                <tr th:each="profesor : ${profesores}">
-                    <td th:text="${profesor.nombre}"></td>
-                    <td th:text="${profesor.apellido}"></td>
-                    <td th:text="${profesor.DNI}"></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/editarprofesores/} + ${profesor.idProfesores}" th:text="Editar"></a></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminarprofesores(idProfesores=${profesor.idProfesores})}" th:text="Eliminar"></a></td>
-            </table>
-        </div>
+        <section th:replace="layout/agregarProfesor :: agregarProfesor"></section>
         
-        <div th:if="${materias == null or materias.empty}">
-            La lista de Materias está vacía
-        </div>
+        <section sec:authorize="hasRole('ROLE_ADMIN')" 
+            th:replace="layout/listadoProfesores :: listadoProfesores">
+        </section>
         
-        <div th:if="${profesores == null or profesores.empty}">
-            La lista de Profesores está vacía
-        </div>
-        
-        <div th:replace="layout/plantilla :: footer"></div>
+        <footer th:replace="layout/plantilla :: footer"></footer>
         
     </body>
 </html>

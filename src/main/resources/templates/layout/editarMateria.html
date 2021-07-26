@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Materia</title>
+</head>
+<body>
+    <section th:fragment="editarMateria">
+        <form th:action="@{/guardar}" th:object="${materias}" 
+            method="POST" class="was-validated">
+            <input type="hidden" name="idMaterias" th:field="*{idMaterias}">
+            <section th:replace="layout/btnEditarMateria :: btnEditarMateria"></section>
+            <div id="details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>[[#{accion.editar}]]</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="nombre">[[#{materia.nombre}]]</label>
+                                        <input type="text" class="form-control" name="nombre" 
+                                            required="true" th:field="*{nombre}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">[[#{materia.horario}]]</label> 
+                                        <input type="text" class="form-control" name="horario" 
+                                            required="true" th:field="*{horario}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DNI">[[#{materia.cupoMaxAlumnos}]]</label>
+                                        <input type="text" class="form-control" name="Cupo Máximo" 
+                                            required="true" th:field="*{cupoMaxAlumnos}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+    
+</body>
+</html>

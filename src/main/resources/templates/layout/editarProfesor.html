@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Profesor</title>
+</head>
+<body>
+    <section th:fragment="editarProfesor">
+        <form th:action="@{/guardarprofesores}" th:object="${profesores}" 
+            method="post" class="was-validated">
+            <input type="hidden" name="idProfesores" th:field="*{idProfesores}">
+            <section th:replace="layout/btnEditarProfesor :: btnEditarProfesor"></section>
+            <div id="details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>[[#{accion.editar}]]</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="nombre">[[#{profesor.nombre}]]</label>
+                                        <input type="text" class="form-control" name="nombre" 
+                                            required="true" th:field="*{nombre}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">[[#{profesor.apellido}]]</label> 
+                                        <input type="text" class="form-control" name="apellido" 
+                                            required="true" th:field="*{apellido}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DNI">[[#{profesor.DNI}]]</label>
+                                        <input type="text" class="form-control" name="DNI" 
+                                            required="true" th:field="*{DNI}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

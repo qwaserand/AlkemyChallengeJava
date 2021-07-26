@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado de Materias</title>
+        <meta charset="UTF-8"/>   
+    </head>
+    <body> 
+        <section th:fragment="listadoMaterias" id="materias">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Listado de Materias</h4>
+                            </div>
+                            <div th:if="${materias != null and !materias.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th th:text="#{materia.nombre}">Nombre</th>
+                                            <th th:text="#{materia.horario}">Horario</th>
+                                            <th th:text="#{materia.cupoMaxAlumnos}">Cupo Máximo</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="materia : ${materias}">
+                                            <td>[[${materia.nombre}]]</td>
+                                            <td>[[${materia.horario}]]</td>
+                                            <td>[[${materia.cupoMaxAlumnos}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${materia.idMaterias}" 
+                                                class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]    
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idMaterias=${materia.idMaterias})}"
+                                                class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                            <td sec:authorize="hasRole('ROLE_USER')">
+                                                <a th:href="@{/inscripcion}"
+                                                class="btn btn-success">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.inscribirse}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${materias == null or materias.empty}">
+                                <span th:text="#{materia.lista-vacia}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>       
+    </body>
+</html>

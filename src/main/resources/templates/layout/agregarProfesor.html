@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: headfront">
+        <title>Información de Profesores</title>
+        <meta charset="UTF-8"/>   
+    </head>
+    <body>
+        <section th:fragment="agregarProfesor">
+            <div id="agregarProfesor" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Profesor</h5>
+                            <button class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <form th:action="@{/guardarprofesores}" method="post" th:object="${profesores}" 
+                            class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label th:text="#{profesor.nombre}">Nombre:</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label th:text="#{profesor.apellido}">Apellido:</label> 
+                                    <input type="text" class="form-control" name="apellido" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label th:text="#{profesor.DNI}">DNI:</label>
+                                    <input type="text" class="form-control" name="DNI" required="true">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
